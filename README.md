@@ -1,7 +1,12 @@
+# Markee is a website, to show my works and to find clients.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Getting Started
+## Minimal Path to Awesome
 First, run the development server:
 
 ```bash
@@ -12,11 +17,22 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All of the components are placed under the [components](./components) folder. Each component folder has its corresponding:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Component file | .tsx file
+- Test file | .test.ts file
+- Props file, if applicable | .ts file
+- Styles file, if applicable | .ts file
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Methods, properties and components:
+# Build and Test
+
+* Implemented the `[Major].[Minor].[Dev].[ReactVersion]` versioning convention
+
+# Version history
+* ......TODO
+## Version 1.1.0.1820
+* Implemented NEXT.js website
 
 ## Learn More
 
@@ -32,3 +48,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
