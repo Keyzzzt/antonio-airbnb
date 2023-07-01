@@ -1,9 +1,9 @@
-'use client'
-import { styles } from './NavbarStyles'
-import { Container } from '../MultiPurpose/Container/Container'
-import { Logo } from './Logo/Logo'
-import { Search } from './Search/Search'
-import { UserMenu } from './UserMenu/UserMenu'
+"use client";
+import { styles } from "./NavbarStyles";
+import { Container } from "../MultiPurpose/Container/Container";
+import { Logo } from "./Logo/Logo";
+import { Search } from "./Search/Search";
+import { UserMenu } from "./UserMenu/UserMenu";
 
 export const Navbar = () => {
   return (
@@ -18,6 +18,5 @@ export const Navbar = () => {
         </Container>
       </div>
     </div>
-  )
-}
-
+  );
+};
