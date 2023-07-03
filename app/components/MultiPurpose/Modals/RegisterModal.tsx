@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { useRegisterModal } from "@/app/helpers/hooks/useRegisterModal";
-import { Modal } from "../Modal";
-import { Heading } from "../../Heading";
-import { Input } from "../../Inputs/Input";
+import { Modal } from "./Modal";
+import { Heading } from "../Heading";
+import { Input } from "../Inputs/Input";
 import { toast } from "react-hot-toast";
-import { Button } from "../../Button/Button";
+import { Button } from "../Button/Button";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 
