@@ -1,23 +1,23 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar } from "../MultiPurpose/Avatar";
 import { MenuItem } from "./MenuItem/MenuItem";
 import { useRegisterModal } from "@/app/helpers/hooks/useRegisterModal";
 import { useLoginModal } from "@/app/helpers/hooks/useLoginModal";
-import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+import { SaveUser } from "@/app/types";
 
 type UserMenuProps = {
-  currentUser?: User | null;
+  currentUser?: SaveUser | null;
 };
 
 export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  const toggleUserMenu = useCallback(() => {
+  const toggleUserMenu = React.useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
   return (
