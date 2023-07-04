@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 export const Search = () => {
   return (
     <div className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md cursor-pointer transition">
-      <div className="'flex flex-row items-center justify-between">
+      <div className="flex flex-row items-center justify-between">
         <div className="text-sm font-semibold px-6">Anywhere</div>
         <div className="flex-1 text-center hidden sm:block text-sm font-semibold px-6 border-x-[1px]">
           Any week
