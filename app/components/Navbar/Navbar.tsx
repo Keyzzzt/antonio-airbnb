@@ -1,4 +1,3 @@
-"use client";
 import { Container } from "../MultiPurpose/Container";
 import { Logo } from "./Logo";
 import { Search } from "./Search";
