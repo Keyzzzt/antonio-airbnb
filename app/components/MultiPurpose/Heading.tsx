@@ -1,5 +1,4 @@
 "use client";
-import React, { FC } from "react";
 
 type HeadingProps = {
   title: string;
@@ -7,7 +6,11 @@ type HeadingProps = {
   center?: boolean;
 };
 
-export const Heading: FC<HeadingProps> = ({ title, subTitle, center }) => {
+export const Heading: React.FC<HeadingProps> = ({
+  title,
+  subTitle,
+  center,
+}) => {
   return (
     <div className={center ? "text-center" : "text-start"}>
       <div className="text-2xl font-bold">{title}</div>

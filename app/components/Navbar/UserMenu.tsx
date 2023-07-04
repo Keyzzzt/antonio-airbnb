@@ -2,7 +2,7 @@
 import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar } from "../MultiPurpose/Avatar";
-import { MenuItem } from "./MenuItem/MenuItem";
+import { MenuItem } from "./MenuItem";
 import { useRegisterModal } from "@/app/helpers/hooks/useRegisterModal";
 import { useLoginModal } from "@/app/helpers/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
@@ -35,7 +35,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar imageSrc={currentUser?.image} />
           </div>
         </div>
       </div>

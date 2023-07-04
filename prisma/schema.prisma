@@ -16,7 +16,7 @@ model User {
   email          String?   @unique
   emailVerified  DateTime?
   image          String?
-  hashedPassword String? //Password is not required, as user can login with Google etc.
+  hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   favoriteIds    String[]  @db.ObjectId
@@ -53,14 +53,13 @@ model Listing {
   createdAt     DateTime @default(now())
   category      String
   roomCount     Int
-  bathRoomCount Int
+  bathroomCount Int
   guestCount    Int
   locationValue String
   userId        String   @db.ObjectId
   price         Int
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
 }
 

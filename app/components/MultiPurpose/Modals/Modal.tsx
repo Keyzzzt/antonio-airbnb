@@ -1,7 +1,7 @@
 "use client";
-import { FC, useEffect, useState, useCallback } from "react";
-import { IoMdClose } from "react-icons/io";
+import React from "react";
 import { Button } from "../Button/Button";
+import { IoMdClose } from "react-icons/io";
 
 type ModalProps = {
   isOpen?: boolean;
@@ -16,7 +16,7 @@ type ModalProps = {
   footer?: React.ReactElement;
 };
 
-export const Modal: FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
   isOpen,
   disabled,
   onClose,
@@ -28,9 +28,9 @@ export const Modal: FC<ModalProps> = ({
   secondaryActionLabel,
   footer,
 }) => {
-  const [showModal, setShowModal] = useState(isOpen);
+  const [showModal, setShowModal] = React.useState(isOpen);
 
-  const handleClose = useCallback(() => {
+  const handleClose = React.useCallback(() => {
     if (!disabled) {
       setShowModal(false);
       setTimeout(() => {
@@ -39,19 +39,19 @@ export const Modal: FC<ModalProps> = ({
     }
   }, [disabled, onClose]);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = React.useCallback(() => {
     if (!disabled) {
       onSubmit();
     }
   }, [disabled, onSubmit]);
 
-  const handleSecondaryAction = useCallback(() => {
+  const handleSecondaryAction = React.useCallback(() => {
     if (!disabled && secondaryAction) {
       secondaryAction();
     }
   }, [disabled, secondaryAction]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setShowModal(isOpen);
   }, [isOpen]);
 

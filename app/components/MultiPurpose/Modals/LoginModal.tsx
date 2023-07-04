@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { useRegisterModal } from "@/app/helpers/hooks/useRegisterModal";
@@ -15,7 +15,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export const LoginModal = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -87,7 +87,7 @@ export const LoginModal = () => {
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">

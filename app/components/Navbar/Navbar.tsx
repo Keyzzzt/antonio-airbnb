@@ -1,10 +1,10 @@
 "use client";
-import { Container } from "../MultiPurpose/Container/Container";
-import { Logo } from "./Logo/Logo";
-import { Search } from "./Search/Search";
-import { UserMenu } from "./UserMenu";
+import { Container } from "../MultiPurpose/Container";
+import { Logo } from "./Logo";
+import { Search } from "./Search";
 import React from "react";
 import { SaveUser } from "@/app/types";
+import { UserMenu } from "./UserMenu";
 
 type NavbarProps = {
   currentUser?: SaveUser | null;
