@@ -4,13 +4,13 @@ import { Search } from "./Search";
 import React from "react";
 import { SaveUser } from "@/app/types";
 import { UserMenu } from "./UserMenu";
+import { Categories } from "./Categories";
 
 type NavbarProps = {
   currentUser?: SaveUser | null;
 };
 
 export const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
-  console.log("🚀 ~ file: Navbar.tsx:14 ~ currentUser:", currentUser);
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px]">
@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 };
