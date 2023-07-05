@@ -101,6 +101,10 @@ export const RentModal = () => {
     </div>
   );
 
+  if (step === Steps.Location) {
+    body = <div>Location</div>;
+  }
+
   return (
     <Modal
       isOpen={rentModal.isOpen}
@@ -109,7 +113,7 @@ export const RentModal = () => {
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === Steps.Category ? undefined : onBack}
       onClose={rentModal.onClose}
-      onSubmit={rentModal.onClose}
+      onSubmit={onNext}
       body={body}
     />
   );
