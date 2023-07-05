@@ -51,6 +51,11 @@ export const LoginModal = () => {
     });
   };
 
+  const switchToRegisterModal = React.useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const body = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome back" subTitle="Login to your account!" />
@@ -91,12 +96,12 @@ export const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
-          <div>Already have an account?</div>
+          <div>First time using Markee?</div>
           <div
-            onChange={registerModal.onClose}
+            onClick={switchToRegisterModal}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Log in
+            Create an account
           </div>
         </div>
       </div>
