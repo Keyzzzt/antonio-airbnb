@@ -3,6 +3,7 @@
         "latlng",
         "NEXTAUTH",
         "prismadb",
+        "vvcnn",
         "zustand"
     ]
 }
