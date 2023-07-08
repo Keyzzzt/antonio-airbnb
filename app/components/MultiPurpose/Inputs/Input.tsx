@@ -22,9 +22,6 @@ export const Input: React.FC<InputProps> = ({
   register,
   errors,
 }) => {
-  if (errors) {
-    console.log(errors);
-  }
   return (
     <div className="w-full relative">
       {formatPrice && (

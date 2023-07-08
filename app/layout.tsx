@@ -6,7 +6,7 @@ import { Nunito } from "next/font/google";
 import { ToasterProvider } from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 import { ClientOnly } from "./components/ClientOnly";
-import { RentModal } from "./components/MultiPurpose/Modals/RentModal";
+import RentModal from "./components/MultiPurpose/Modals/RentModal";
 
 const font = Nunito({ subsets: ["latin"] });
 
