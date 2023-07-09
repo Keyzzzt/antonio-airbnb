@@ -12,7 +12,8 @@ export async function getListings() {
     }))
 
     return safeListings
-  } catch (error: any) {
-    throw new Error(error)
+  } catch (error) {
+    console.error(`Error fetching listing by ID: ${error}`)
+    return null
   }
 }
