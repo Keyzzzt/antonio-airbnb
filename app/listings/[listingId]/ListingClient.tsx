@@ -6,8 +6,7 @@ import { ListingInfo } from '@/app/components/Listings/ListingInfo'
 import { Container } from '@/app/components/MultiPurpose/Container'
 import { categories } from '@/app/components/Navbar/Categories'
 import { useLoginModal } from '@/app/helpers/hooks/useLoginModal'
-import { SafeListing, SafeUser } from '@/app/types'
-import { Reservation } from '@prisma/client'
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
@@ -21,7 +20,7 @@ const initialDateRange: Range = {
 }
 
 type ListingClientProps = {
-  reservations?: Reservation[]
+  reservations?: SafeReservation[]
   listing: SafeListing & { user: SafeUser }
   currentUser: SafeUser | null
 }
@@ -54,7 +53,7 @@ export const ListingClient: React.FC<ListingClientProps> = ({
       .then(() => {
         toast.success('Reservation success')
         setDateRange(initialDateRange)
-        router.refresh()
+        router.push('/trips')
       })
       .catch(() => {
         toast('Something went wrong!')
@@ -77,10 +76,6 @@ export const ListingClient: React.FC<ListingClientProps> = ({
       const dayCount = differenceInCalendarDays(
         dateRange.startDate,
         dateRange.endDate,
-      )
-      console.log(
-        '🚀 ~ file: ListingClient.tsx:81 ~ React.useEffect ~ dayCount:',
-        dayCount,
       )
 
       if (dayCount && listing.price) {
