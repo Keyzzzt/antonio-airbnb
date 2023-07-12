@@ -1,55 +1,63 @@
 'use client'
-import { useCountries } from '@/app/helpers/hooks/useCountries'
-import { SafeListing, SafeReservation, SafeUser } from '@/app/types'
-import { useRouter } from 'next/navigation'
-import React from 'react'
-import { format } from 'date-fns'
 import Image from 'next/image'
-import { HeartButton } from '../HeartButton'
+import { useRouter } from 'next/navigation'
+import { useCallback, useMemo } from 'react'
+import { format } from 'date-fns'
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types'
+import { useCountries } from '@/app/helpers/hooks/useCountries'
 import { Button } from '../MultiPurpose/Button/Button'
+import { HeartButton } from '../HeartButton'
 
-type ListingCardProps = {
+interface ListingCardProps {
   data: SafeListing
   reservation?: SafeReservation
-  currentUser: SafeUser | null
   onAction?: (id: string) => void
   disabled?: boolean
   actionLabel?: string
   actionId?: string
+  currentUser?: SafeUser | null
 }
-export const ListingCard: React.FC<ListingCardProps> = ({
+
+const ListingCard: React.FC<ListingCardProps> = ({
   data,
-  currentUser,
-  actionId = '',
-  actionLabel,
-  disabled,
-  onAction,
   reservation,
+  onAction,
+  disabled,
+  actionLabel,
+  actionId = '',
+  currentUser,
 }) => {
   const router = useRouter()
   const { getByValue } = useCountries()
-  const handleCancel = React.useCallback(
-    (e: React.MouseEvent) => {
-      e.stopPropagation()
-
-      if (!disabled) {
-        onAction?.(actionId)
-      }
-    },
-    [onAction, actionId, disabled],
-  )
 
   const location = getByValue(data.locationValue)
-  const price = React.useMemo(() => {
+
+  const handleCancel = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation()
+
+      if (disabled) {
+        return
+      }
+
+      onAction?.(actionId)
+    },
+    [disabled, onAction, actionId],
+  )
+
+  const price = useMemo(() => {
     if (reservation) {
       return reservation.totalPrice
     }
+
     return data.price
   }, [reservation, data.price])
-  const reservationDate = React.useMemo(() => {
+
+  const reservationDate = useMemo(() => {
     if (!reservation) {
       return null
     }
+
     const start = new Date(reservation.startDate)
     const end = new Date(reservation.endDate)
 
@@ -62,18 +70,38 @@ export const ListingCard: React.FC<ListingCardProps> = ({
       className='col-span-1 cursor-pointer group'
     >
       <div className='flex flex-col gap-2 w-full'>
-        <div className='aspect-square relative w-full overflow-hidden rounded-xl'>
+        <div
+          className='
+            aspect-square 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          '
+        >
           <Image
             fill
-            alt='listing'
+            className='
+              object-cover 
+              h-full 
+              w-full 
+              group-hover:scale-110 
+              transition
+            '
             src={data.imageSrc}
-            className='object-cover h-full w-full group-hover:scale-110 transition'
+            alt='Listing'
           />
-          <div className='absolute top-3 right-3'>
+          <div
+            className='
+            absolute
+            top-3
+            right-3
+          '
+          >
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className='font-semibold text-lg '>
+        <div className='font-semibold text-lg'>
           {location?.region}, {location?.label}
         </div>
         <div className='font-light text-neutral-500'>
@@ -86,8 +114,8 @@ export const ListingCard: React.FC<ListingCardProps> = ({
         {onAction && actionLabel && (
           <Button
             disabled={disabled}
-            label={actionLabel}
             small
+            label={actionLabel}
             onClick={handleCancel}
           />
         )}
@@ -95,3 +123,5 @@ export const ListingCard: React.FC<ListingCardProps> = ({
     </div>
   )
 }
+
+export default ListingCard

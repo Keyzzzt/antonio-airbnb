@@ -22,9 +22,10 @@ export const ClientTrips: React.FC<ClientTripsProps> = ({
   const handleCancelReservation = React.useCallback((id: string) => {
     setDeletingId(id)
     axios
-      .delete(`/api/reservation/${id}`)
+      .delete(`/api/reservations/${id}`)
       .then(() => {
         toast.success('Reservation canceled!')
+        router.refresh()
       })
       .catch(() => {
         toast.error('Reservation cancelation error!')
@@ -37,7 +38,7 @@ export const ClientTrips: React.FC<ClientTripsProps> = ({
         title='Trips'
         subtitle='Where you have been and where you are going.'
       />
-      <div className='gap-3 mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
+      <div className='gap-8 mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
         {reservations?.map((r) => (
           <ListingCard
             key={r.id}
