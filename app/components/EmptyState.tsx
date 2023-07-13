@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { Heading } from './MultiPurpose/Heading'
-import { Button } from './MultiPurpose/Button/Button'
+import { Button } from './MultiPurpose/Button'
 
 type EmptyStateProps = {
   title?: string

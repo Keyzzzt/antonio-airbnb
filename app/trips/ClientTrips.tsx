@@ -6,7 +6,7 @@ import { Heading } from '../components/MultiPurpose/Heading'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import { ListingCard } from '../components/Listings/ListingCard'
+import ListingCard from '../components/Listings/ListingCard'
 
 type ClientTripsProps = {
   reservations?: SafeReservation[]
@@ -19,18 +19,21 @@ export const ClientTrips: React.FC<ClientTripsProps> = ({
   const [deletingId, setDeletingId] = React.useState('')
   const router = useRouter()
 
-  const handleCancelReservation = React.useCallback((id: string) => {
-    setDeletingId(id)
-    axios
-      .delete(`/api/reservations/${id}`)
-      .then(() => {
-        toast.success('Reservation canceled!')
-        router.refresh()
-      })
-      .catch(() => {
-        toast.error('Reservation cancelation error!')
-      })
-  }, [])
+  const handleCancelReservation = React.useCallback(
+    (id: string) => {
+      setDeletingId(id)
+      axios
+        .delete(`/api/reservations/${id}`)
+        .then(() => {
+          toast.success('Reservation canceled!')
+          router.refresh()
+        })
+        .catch(() => {
+          toast.error('Reservation cancelation error!')
+        })
+    },
+    [router],
+  )
 
   return (
     <Container>

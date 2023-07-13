@@ -5,7 +5,7 @@ import { useCallback, useMemo } from 'react'
 import { format } from 'date-fns'
 import { SafeListing, SafeReservation, SafeUser } from '@/app/types'
 import { useCountries } from '@/app/helpers/hooks/useCountries'
-import { Button } from '../MultiPurpose/Button/Button'
+import { Button } from '../MultiPurpose/Button'
 import { HeartButton } from '../HeartButton'
 
 interface ListingCardProps {

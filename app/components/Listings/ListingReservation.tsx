@@ -2,7 +2,7 @@
 import React from 'react'
 import { Range } from 'react-date-range'
 import { Calendar } from '../MultiPurpose/Inputs/Calendar'
-import { Button } from '../MultiPurpose/Button/Button'
+import { Button } from '../MultiPurpose/Button'
 
 type ListingReservationProps = {
   price: number
