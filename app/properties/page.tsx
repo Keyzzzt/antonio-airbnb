@@ -3,7 +3,7 @@ import { ClientOnly } from '../components/ClientOnly'
 import getCurrentUser from '../actions/getCurrentUser'
 import { EmptyState } from '../components/EmptyState'
 import { ClientProperties } from './ClientProperties'
-import { getListings } from '../actions/getListings'
+import getListings from '../actions/getListings'
 
 export default async function PropertiesPage() {
   const currentUser = await getCurrentUser()
