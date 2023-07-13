@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 import { BiDollar } from "react-icons/bi";
 
@@ -23,9 +22,6 @@ export const Input: React.FC<InputProps> = ({
   register,
   errors,
 }) => {
-  if (errors) {
-    console.log(errors);
-  }
   return (
     <div className="w-full relative">
       {formatPrice && (
