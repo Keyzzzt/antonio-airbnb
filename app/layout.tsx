@@ -1,29 +1,42 @@
-import { RegisterModal } from "./components/MultiPurpose/Modals/RegisterModal/RegisterModal";
-import { Navbar } from "./components/Navbar/Navbar";
-import "./globals.css";
-import { Nunito } from "next/font/google";
-import { ToasterProvider } from "./providers/ToasterProvider";
+import { RegisterModal } from './components/MultiPurpose/Modals/RegisterModal'
+import { LoginModal } from './components/MultiPurpose/Modals/LoginModal'
+import { Navbar } from './components/Navbar/Navbar'
+import './globals.css'
+import { Nunito } from 'next/font/google'
+import { ToasterProvider } from './providers/ToasterProvider'
+import getCurrentUser from './actions/getCurrentUser'
+import { ClientOnly } from './components/ClientOnly'
+import RentModal from './components/MultiPurpose/Modals/RentModal'
+import { SearchModal } from './components/MultiPurpose/Modals/SearchModal'
 
-const font = Nunito({ subsets: ["latin"] });
+const font = Nunito({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "Markee",
-  description: "New life to start...",
-};
+  title: 'Markee',
+  description: 'New life to start...',
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser()
+
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={font.className}>
-        <ToasterProvider />
-        <RegisterModal />
-        <Navbar />
-        {children}
+        <ClientOnly>
+          <ToasterProvider />
+          <LoginModal />
+          <RentModal />
+          <RegisterModal />
+          <SearchModal />
+          <Navbar currentUser={currentUser} />
+        </ClientOnly>
+
+        <div className='pb-20 pt-28'>{children}</div>
       </body>
     </html>
-  );
+  )
 }
