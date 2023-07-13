@@ -1,15 +1,17 @@
+export const dynamic = 'force-dynamic'
+import { EmptyState } from '@/app/components/EmptyState'
 import getListings, { ListingParams } from '@/app/actions/getListings'
 import getCurrentUser from '@/app/actions/getCurrentUser'
 import { ClientOnly } from './components/ClientOnly'
-import { EmptyState } from './components/EmptyState'
-import { Container } from './components/MultiPurpose/Container'
 import ListingCard from './components/Listings/ListingCard'
+import { Container } from './components/MultiPurpose/Container'
 
 interface HomeProps {
   searchParams: ListingParams
 }
 
 const Home = async ({ searchParams }: HomeProps) => {
+  console.log('🚀 ~ file: page.tsx:13 ~ Home ~ searchParams:', searchParams)
   const listings = await getListings(searchParams)
   const currentUser = await getCurrentUser()
 
@@ -20,6 +22,7 @@ const Home = async ({ searchParams }: HomeProps) => {
       </ClientOnly>
     )
   }
+
   return (
     <ClientOnly>
       <Container>
